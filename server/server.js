@@ -23,7 +23,7 @@ var
 
   // require routes
   routes = require('./routes/api.js'),
-  apiRoutes = require('./routes/pages.js'),
+  // apiRoutes = require('./routes/pages.js'),
 
 //Port declaration
   PORT = process.env.port || 7000

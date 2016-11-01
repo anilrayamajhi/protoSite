@@ -16,12 +16,12 @@ var
   passportConfig = require('./config/passport.js'),
   request = require('request'),
   Yelp = require('yelp'),
-  
+
   // user schema/model
   User = require('./models/User.js'),
 
   // require routes
-  routes = require('./routes/api.js'),
+  routes = require('./routes/users.js'),
   // apiRoutes = require('./routes/pages.js'),
 
   //mongo variable

@@ -3,13 +3,13 @@ angular.module('myApp')
   .controller('loginController', loginController)
   .controller('logoutController', logoutController)
   .controller('registerController', registerController)
-    
+
 
   mainController.$inject = ['$rootScope', '$state', 'AuthService']
   loginController.$inject = ['$state', 'AuthService']
   logoutController.$inject = ['$state', 'AuthService']
   registerController.$inject = ['$state', 'AuthService']
-  
+
 
 function mainController($rootScope, $state, AuthService) {
   var vm = this
@@ -18,6 +18,7 @@ function mainController($rootScope, $state, AuthService) {
     AuthService.getUserStatus()
       .then(function(data){
         vm.currentUser = data.data.user
+        console.log(data.data.user);
       })
   })
 }
@@ -50,7 +51,7 @@ function loginController($state, AuthService) {
       })
   }
 }
- 
+
 
 // LOGOUT CONTROLLER:
 function logoutController($state, AuthService) {

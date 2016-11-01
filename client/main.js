@@ -38,7 +38,7 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
       templateUrl: 'templates/profile.html',
       restricted: true
     })
-    
+
 })
 
 myApp.run(function ($rootScope, $location, $state, AuthService) {
@@ -49,7 +49,7 @@ myApp.run(function ($rootScope, $location, $state, AuthService) {
       // console.log(toState)
       if (toState.restricted && !AuthService.isLoggedIn()){
         // $location.path('/login')
-        $state.go('login'); 
+        $state.go('login');
       }
     })
   })

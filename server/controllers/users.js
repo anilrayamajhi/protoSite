@@ -1,10 +1,15 @@
-var express = require('express')
-var router = express.Router()
-var passport = require('passport')
+var
+  User = require('../models/User.js'),
+  passport = require('passport')
 
-var User = require('../models/User.js')
+module.exports = {
+  register: register,
+  login:login,
+  logout:logout,
+  status:status
+}
 
-router.post('/register', function(req, res) {
+function register (req, res) {
 //.register is same like create but it is created by passport
   User.register(new User({ username: req.body.username }),
     req.body.password, function(err, account) {
@@ -19,9 +24,9 @@ router.post('/register', function(req, res) {
       })
     })
   })
-})
+}
 
-router.post('/login', function(req, res, next) {
+function login(req, res, next) {
   passport.authenticate('local', function(err, user, info) {
     if (err) {
       return next(err)
@@ -43,16 +48,18 @@ router.post('/login', function(req, res, next) {
       })
     })
   })(req, res, next)
-})
+}
 
-router.get('/logout', function(req, res) {
+
+function logout(req, res) {
   req.logout()
   res.status(200).json({
     status: 'Bye!'
   })
-})
+}
 
-router.get('/status', function(req, res) {
+
+function status(req, res) {
   if (!req.isAuthenticated()) {
     return res.status(200).json({
       status: false
@@ -62,7 +69,4 @@ router.get('/status', function(req, res) {
     status: true,
     user: req.user
   })
-})
-
-
-module.exports = router
+}

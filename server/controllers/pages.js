@@ -1,5 +1,6 @@
 var
-  Page = require('../models/Page.js')
+  Page = require('../models/Page.js'),
+  User = require('../models/User.js')
 
 module.exports = {
   index:index,
@@ -10,7 +11,9 @@ module.exports = {
 }
 
 function index(req, res) {
-  Page.find({}, function(err, pages) {
+  Page.find(req.body).sort({createdAt: 'desc'}).populate('_by User').exec(function(err, pages) {
+    console.log(req.user);
+    console.log(req.body);
     if(err) return console.log(err)
     res.json(pages)
   })
@@ -24,16 +27,22 @@ function show(req, res) {
 }
 
 function create(req, res) {
-  Page.create(req.body, function(err, page) {
-    if(err) return console.log(err)
-    res.json({success: true, message: "Page created!🤘🏿", page: page})
-  })
+  Page.findById(req.user).populate('User').exec(function(err, body) {
+    if(err) console.log(err);
+    var newPage = new Page();
+    newPage._by = req.user._id;
+    newPage.pageUrl = req.body.pageUrl
+    newPage.save(function(err){
+        if(err) console.log(err);
+        res.json({success: true, message: "Page created!🤘🏿", page: body})
+    })
+    })
 }
 
 function update(req, res) {
   Page.findByIdAndUpdate(req.params.id, req.body, {new: true},function(err, page) {
     if(err) return console.log(err)
-    res.json({success: true, message: "Page updated! 🚙", page: page})
+    res.json({success: true, message: "Page updated!", page: page})
   })
 }
 

@@ -8,3 +8,9 @@
         <input type="submit" value="submit" class="btn btn-info">
       </form>
     </div>
+
+<div class="list-group-item" ng-repeat="page in pageCtrl.pages">
+  {{page._by._id}}<br />
+  {{main.currentUser._id}}<br>
+  {{page}}
+</div>

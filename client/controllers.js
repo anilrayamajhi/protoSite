@@ -4,6 +4,7 @@ angular.module('myApp')
   .controller('logoutController', logoutController)
   .controller('registerController', registerController)
   .controller('pageController', pageController)
+  // .filter('pageFilter', pageFilter)
 
 
   mainController.$inject = ['$rootScope', '$state', 'AuthService']
@@ -97,11 +98,23 @@ function registerController($state, AuthService) {
 
 function pageController($state, $http){
   var vm = this
+
+  $http.get('/api/pages')
+    .success(function(data) {
+      console.log(data);
+      vm.pages = data
+    })
+
   vm.createPage = function() {
-    $http.post('/api/cars', vm.newCar)
+    $http.post('/api/pages', vm.newPage)
       .success(function(data) {
           console.log(data);
           // $state.go('cars')
       })
     }
 }
+
+// function pageFilter(){
+//   var vm = this;
+//
+// }

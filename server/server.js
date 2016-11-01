@@ -21,7 +21,7 @@ var
   User = require('./models/User.js'),
 
   // require routes
-  routes = require('./routes/users.js'),
+  usersRoutes = require('./routes/users.js'),
   pagesRoutes = require('./routes/pages.js'),
 
   //mongo variable
@@ -75,11 +75,18 @@ app.use(passport.session())
 // app.use(express.static(path.join(__dirname, 'public')))
 
 // routes
-app.use('/user/', routes)
+app.use('/user/', usersRoutes)
+app.use('/api/', pagesRoutes)
 
 // app.get('/', function(req, res) {
 //   res.sendFile(path.join(__dirname, '../client', 'index.html'))
 // })
+
+app.use(function(req, res, next){
+  if(req.user) req.app.currentUser = req.user
+  req.app.loggedIn = !!req.user
+  next()
+})
 
 // error hndlers
 app.use(function(req, res, next) {
@@ -95,7 +102,6 @@ app.use(function(err, req, res) {
     error: {}
   }))
 })
-
 
 
 app.listen(PORT, function(err) {

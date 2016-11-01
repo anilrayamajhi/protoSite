@@ -3,12 +3,14 @@ angular.module('myApp')
   .controller('loginController', loginController)
   .controller('logoutController', logoutController)
   .controller('registerController', registerController)
+  .controller('pageController', pageController)
 
 
   mainController.$inject = ['$rootScope', '$state', 'AuthService']
   loginController.$inject = ['$state', 'AuthService']
   logoutController.$inject = ['$state', 'AuthService']
   registerController.$inject = ['$state', 'AuthService']
+  pageController.$inject = ['$state', '$http']
 
 
 function mainController($rootScope, $state, AuthService) {
@@ -91,4 +93,15 @@ function registerController($state, AuthService) {
         vm.registerForm = {}
       })
   }
+}
+
+function pageController($state, $http){
+  var vm = this
+  vm.createPage = function() {
+    $http.post('/api/cars', vm.newCar)
+      .success(function(data) {
+          console.log(data);
+          // $state.go('cars')
+      })
+    }
 }

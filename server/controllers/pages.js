@@ -43,4 +43,3 @@ function destroy(req, res) {
     res.json({success: true, message: "Page deleted 😪"})
   })
 }
-}

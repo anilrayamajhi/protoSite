@@ -22,7 +22,7 @@ var
 
   // require routes
   routes = require('./routes/users.js'),
-  // apiRoutes = require('./routes/pages.js'),
+  pagesRoutes = require('./routes/pages.js'),
 
   //mongo variable
   mongoConnection = process.env.MONGO_URL,

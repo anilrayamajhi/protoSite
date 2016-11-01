@@ -1,9 +1,9 @@
 <h1>Current User: {{ main.currentUser.username }}</h1>
 <h1>Site Engine</h1>
 <div class="row">
-      <form ng-submit="ac.createCar()" class="col-md-12">
+      <form ng-submit="pageCtrl.createPage()" class="col-md-12">
         <div class="input-group">
-          <span class="input-group-addon" id="basic-addon3">https://www.yelp.com/biz/**GI**</span><input ng-model="ac.newPage.pageUrl" class="form-control" type="url" name="name" placeholder="Image Link">
+          <span class="input-group-addon" id="basic-addon3">https://www.yelp.com/biz/**GI**</span><input ng-model="pageCtrl.newPage.pageUrl" class="form-control" type="url" name="name" placeholder="Image Link">
         </div><br>
         <input type="submit" value="submit" class="btn btn-info">
       </form>

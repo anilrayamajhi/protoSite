@@ -16,7 +16,6 @@ var
   passportConfig = require('./config/passport.js'),
   request = require('request'),
   Yelp = require('yelp'),
-  server = require('http').createServer(app),
 
   // user schema/model
   User = require('./models/User.js'),
@@ -24,6 +23,9 @@ var
   // require routes
   routes = require('./routes/api.js'),
   // apiRoutes = require('./routes/pages.js'),
+
+  //mongo variable
+  mongoConnection = process.env.MONGO_URL,
 
 //Port declaration
   PORT = process.env.port || 7000
@@ -36,15 +38,11 @@ var
     token_secret: process.env.YELP_ACCESS_TOKEN_SECRET
   })
 
-// mongoose.connect('mongodb://localhost/protoSite', function(err) {
-//   console.log(err || "Connected to MongoDB (protoSite)")
-// })
+mongoose.connect(mongoConnection, function(err) {
+  console.log(err || "Connected to MongoDB (protoSite)")
+})
 
-console.log(yelp);
-
-app.use(logger('dev'))
-app.use(bodyParser.json())
-// app.use(express.static('client'))
+// console.log(yelp);
 
 // app.get('/api', function(req, res){
 //   yelp.business('caressa-beauty-salon-culver-city', function(err, data) {
@@ -62,7 +60,7 @@ app.use(bodyParser.json())
 
 
 // define middleware
-// app.use(express.static(path.join(__dirname, '../client')))
+app.use(express.static(path.join(__dirname, '../client')))
 app.use(logger('dev'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -74,7 +72,7 @@ app.use(require('express-session')({
 }))
 app.use(passport.initialize())
 app.use(passport.session())
-// app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, 'public')))
 
 // routes
 app.use('/user/', routes)

@@ -16,7 +16,7 @@ var
   passportConfig = require('./config/passport.js'),
   request = require('request'),
   Yelp = require('yelp'),
-
+  
   // user schema/model
   User = require('./models/User.js'),
 
@@ -72,7 +72,7 @@ app.use(require('express-session')({
 }))
 app.use(passport.initialize())
 app.use(passport.session())
-app.use(express.static(path.join(__dirname, 'public')))
+// app.use(express.static(path.join(__dirname, 'public')))
 
 // routes
 app.use('/user/', routes)

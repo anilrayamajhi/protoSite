@@ -1,4 +1,4 @@
-.nav, .pagination, .carousel, .panel-title a, *[ui-sref] { cursor: pointer;}
+.nav, .pagination, .carousel, .panel-title a, *[ui-sref] { cursor: pointer; }
 
 .container {
   padding-top: 75px;

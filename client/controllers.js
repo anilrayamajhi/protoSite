@@ -122,4 +122,31 @@ function singlePageController($state, $http, $stateParams){
     .success(function(page){
       vm.page = page;
     })
+
+    vm.map;
+    vm.getAddress = function() {
+      vm.get('https://maps.googleapis.com/maps/api/geocode/json?address="6018 Dauphin St"')
+      .success(function(data) {
+        console.log("Latitude:", data.results[0].geometry.location.lat)
+        console.log("Longitute:", data.results[0].geometry.location.lng)
+        console.log("{{vm.page.location.coordinate}}");
+        vm.geocodedAddress = data.results[0].geometry.location
+        vm.myMap = new google.maps.Map(document.getElementById('map'), {
+          vm.center: vm.geocodedAddress,
+          vm.zoom: 17,
+          vm.content: 'Ganey'
+        });
+        vm.marker = new google.maps.Marker({
+          vm.position: vm.geocodedAddress,
+          vm.map: vm.myMap,
+        });
+        vm.contentString = "<h1>Ganey's house</h1>"
+        vm.infowindow = new google.maps.InfoWindow({
+           vm.content: vm.contentString
+         });
+        marker.addListener('click', function() {
+          vm.infowindow.open(vm.map, vm.marker);
+    });
+      })
+    }
 }

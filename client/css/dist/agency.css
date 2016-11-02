@@ -101,7 +101,7 @@ fieldset[disabled] .btn-primary.active {
 }
 .btn-xl {
   color: white;
-  background-color: #fed136;
+  background-color: rgba(255,0,0,0.7);
   border-color: #fed136;
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-transform: uppercase;
@@ -116,7 +116,7 @@ fieldset[disabled] .btn-primary.active {
 .btn-xl.active,
 .open .dropdown-toggle.btn-xl {
   color: white;
-  background-color: #fec503;
+  background-color: rgba(255,0,0,0.9);
   border-color: #f6bf01;
 }
 .btn-xl:active,
@@ -226,7 +226,7 @@ fieldset[disabled] .btn-xl.active {
   }
 }
 header {
-  background-image: url('../../img/no28Wallpaper.jpg');
+  background-image: url('../../image/wallBg.jpg');
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center center;
@@ -260,6 +260,7 @@ header .intro-text .intro-heading {
   header .intro-text {
     padding-top: 300px;
     padding-bottom: 200px;
+    color: rgba(0, 0, 0, 0.5);
   }
   header .intro-text .intro-lead-in {
     font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;

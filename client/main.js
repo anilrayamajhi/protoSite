@@ -24,14 +24,10 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
       templateUrl: 'templates/register.html',
       controller: 'registerController as registerCtrl'
     })
-    .state('one', {
-      url: '/one',
-      template: '<h1>This is page one!</h1>'
-    })
-    .state('two', {
-      url: '/two',
-      template: '<h1>This is page two!</h1>',
-      restricted: true
+    .state('page', {
+      url: '/page/:id',
+      templateUrl: 'templates/page.html',
+      controller: 'singlePageController as singlePCtrl'
     })
     .state('profile', {
       url: '/profile',

@@ -1,6 +1,19 @@
 var
   Page = require('../models/Page.js'),
-  User = require('../models/User.js')
+  User = require('../models/User.js'),
+  request = require('request'),
+  Yelp = require('yelp'),
+  _ = require('underscore')
+
+
+
+  //Yelp API Aouth Token
+    var yelp = new Yelp({
+      consumer_key: process.env.YELP_CONSUMER_KEY,
+      consumer_secret: process.env.YELP_CONSUMER_SECRET,
+      token: process.env.YELP_ACCESS_TOKEN,
+      token_secret: process.env.YELP_ACCESS_TOKEN_SECRET
+    })
 
 module.exports = {
   index:index,
@@ -11,17 +24,22 @@ module.exports = {
 }
 
 function index(req, res) {
-  Page.find(req.body).sort({createdAt: 'desc'}).populate('_by User').exec(function(err, pages) {
-    console.log(req.user);
-    console.log(req.body);
+  Page.find({}).sort({createdAt: 'desc'}).populate('_by User').exec(function(err, pages) {
+    console.log(req.user._id);
+    // console.log(pages);
+    // console.log(_.where(pages, {_by}));
     if(err) return console.log(err)
-    res.json(pages)
+    res.json(_.map(pages, function(el){return ((el._by._id).toString() == req.user._id) ? el: null}))
   })
 }
 
 function show(req, res) {
-  Page.findById(req.params.id, function(err, page) {
+  Page.findById(req.params.id).populate('_by').exec(function(err, page) {
     if(err) return console.log(err)
+    yelp.business('caressa-beauty-salon-culver-city', function(err, data) {
+        if (err) return console.log(error);
+        res.send(data)
+      });
     res.json(page)
   })
 }

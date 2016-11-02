@@ -4,6 +4,7 @@ angular.module('myApp')
   .controller('logoutController', logoutController)
   .controller('registerController', registerController)
   .controller('pageController', pageController)
+  .controller('singlePageController', singlePageController)
   // .filter('pageFilter', pageFilter)
 
 
@@ -12,6 +13,7 @@ angular.module('myApp')
   logoutController.$inject = ['$state', 'AuthService']
   registerController.$inject = ['$state', 'AuthService']
   pageController.$inject = ['$state', '$http']
+  singlePageController.$inject = ['$state', '$http', '$stateParams']
 
 
 function mainController($rootScope, $state, AuthService) {
@@ -114,7 +116,10 @@ function pageController($state, $http){
     }
 }
 
-// function pageFilter(){
-//   var vm = this;
-//
-// }
+function singlePageController($state, $http, $stateParams){
+  var vm = this
+  $http.get('api/pages/'+$stateParams.id)
+    .success(function(page){
+      vm.page = page;
+    })
+}

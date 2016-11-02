@@ -1,0 +1,31 @@
+.nav, .pagination, .carousel, .panel-title a, *[ui-sref] { cursor: pointer;}
+
+.container {
+  padding-top: 75px;
+}
+
+.car img {
+  max-width: 100%;
+  margin-right: 25px;
+}
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+  border-color: inherit
+}
+
+#services .glyphicon{
+  font-size: 110px;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #FFFFFF;
+}
+
+.car-image {
+  max-width:100%;
+}
+
+.btn-danger, .btn-info {
+  float:right;
+  margin: 7px;
+}

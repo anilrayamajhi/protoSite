@@ -9,7 +9,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a ui-sref="home" class="navbar-brand">The Car Repo</a>
+      <a ui-sref="home" class="navbar-brand">{{singlePCtrl.page.name}}</a>
     </div>
 
     <div class="collapse navbar-collapse" uib-collapse="navCollapsed">
@@ -17,7 +17,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a ui-sref="home">Home</a></li>
         <li><a ui-sref="cars">Browse</a></li>
-        <li><a ui-sref="share">Share</a></li>
+        <li><a class="underlined-example" href="#contacts">Contacts</a></li>
       </ul>
 
       <!-- Filter Car List, only on 'cars' state -->
@@ -49,15 +49,53 @@
 
 <div class="container">
   <div class="row">
+
     {{3+4}}
-    <p>{{singlePCtrl.page}}</p>
-
-
+    <p class="hidden">{{singlePCtrl.page.location.display_address[0]}}</p>
+    <p class="">{{singlePCtrl.page.name}}</p>
   </div>
+  <button class="hiddent btn btn-info" type="button" name="button">Map View</button><br><br>
+  <div class="map" style="height: 500px" id="map"></div>
 </div>
-<div style="height: 500px" id="map">{{singlePCtrl.map}}</div>
-<script>
 
+<script>
+  var map;
+  var geoLocation;
+  var name;
+  $('body').on('click', '.hiddent', function(evt){
+    geoLocation= $('.hidden').text();
+    $('#map').toggleClass('map');
+    console.log(geoLocation);
+    getAddress(geoLocation);
+})
+
+  function getAddress(searchAddress) {
+    $.get('https://maps.googleapis.com/maps/api/geocode/json?address='+searchAddress)
+    .success(function(data) {
+      // console.log("Latitude:", data.results[0].geometry.location.lat)
+      // console.log("Longitute:", data.results[0].geometry.location.lng)
+
+      var geocodedAddress =  data.results[0].geometry.location
+      // console.log(geocodedAddress);
+      // console.log(data.results[0].geometry.location);
+      myMap = new google.maps.Map(document.getElementById('map'), {
+        center: geocodedAddress,
+        zoom: 17,
+        content: 'Ganey'
+      });
+      var marker = new google.maps.Marker({
+        position: geocodedAddress,
+        map: myMap,
+      });
+      var contentString = "<h1>"++"</h1>"
+      var infowindow = new google.maps.InfoWindow({
+         content: contentString
+       });
+      marker.addListener('click', function() {
+        infowindow.open(map, marker);
+  });
+    })
+  }
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGpU5i66YurDTpGk9tb9DLhoBGKPzxUBE&callback=getAddress"
     async defer></script>

@@ -36,11 +36,10 @@ function index(req, res) {
 function show(req, res) {
   Page.findById(req.params.id).populate('_by').exec(function(err, page) {
     if(err) return console.log(err)
-    yelp.business('caressa-beauty-salon-culver-city', function(err, data) {
+    yelp.business(page.pageUrl.slice(25), function(err, data) {
         if (err) return console.log(error);
         res.send(data)
       });
-    res.json(page)
   })
 }
 

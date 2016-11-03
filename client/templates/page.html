@@ -15,7 +15,6 @@
     <div class="collapse navbar-collapse" uib-collapse="navCollapsed">
       <!-- Main nav links -->
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#/page/{{singlePCtrl.id}}#front">Home</a></li>
         <li><a ui-sref="cars">Browse</a></li>
         <li><a href="#/page/{{singlePCtrl.id}}#contacts">Contacts</a></li>
       </ul>
@@ -28,8 +27,8 @@
 <header id="front">
     <div class="container">
         <div class="intro-text">
-            <div class="intro-lead-in"></div>
             <div class="intro-heading">{{singlePCtrl.page.name}}</div>
+            <div class="intro-lead-in">{{singlePCtrl.page.review_count}} Reviews <br /><img src="  {{singlePCtrl.page.rating_img_url_large}}" alt="" /></div>
             <a href="#/page/{{singlePCtrl.id}}#contacts" class="page-scroll btn btn-xl">Find Us</a>
         </div>
     </div>
@@ -37,8 +36,6 @@
 
 <div class="container">
   <div class="row">
-
-    {{3+4}}
     <p class="hidden add">
       {{singlePCtrl.page.location.display_address[0]}}
     </p>
@@ -48,19 +45,47 @@
     <br><br>
 
   </div>
+
+<div class="row jumbotron">
+  <div class="intro-text">
+    <div class="col-md-6 col-md-offset-6">
+      Speciality:<br><br>
+      <div class="list-group-item list-group-item-danger" ng-repeat="cat in singlePCtrl.page.categories">
+        {{cat[0]}}
+      </div>
+    </div>
+  </div>
+</div>
+
+<br><br><br><br><br><br>
+  <div class="row">
+    <div class="col-md-3">
+      <strong>{{singlePCtrl.page.reviews[0].user.name}}</strong><br><br>
+      <img src="{{singlePCtrl.page.reviews[0].user.image_url}}" alt="" /><br />
+      <img src="{{singlePCtrl.page.reviews[0].rating_image_small_url}}" alt="" />
+    </div>
+    <div class="col-md-6">
+      <br><br>
+      <p>
+        {{singlePCtrl.page.reviews[0].excerpt}}
+      </p>
+      <div class="col-md-offset-6 list-group-item list-group-item-info">
+        {{singlePCtrl.page.reviews[0].time_created | date:"MM/dd/yyyy 'at' h:mma"}}
+      </div>
+    </div>
+  </div>
+
   <div class="map" style="height: 500px" id="map"></div>
+  <br><br>
+  <div id="contacts">
+    <div class="social entypo-facebook-squared"><a href="" target="_blank"></a></div>
+    <div class="social zocial-email"></div>
+    <a href="{{singlePCtrl.page.url}}" target="_blank"><div class="social zocial-yelp"></div></a>
+    <div class="social entypo-map hiddent"><a href=""></a></div>
+    <span id="change"><a href="tel:{{singlePCtrl.page.phone | tel}}"><div class="social entypo-phone"></div></a></span>
+  </div>
 </div>
-<br><br>
 
-
-
-<div id="contacts">
-  <div class="social entypo-facebook-squared"><a href="" target="_blank"></a></div>
-  <div class="social zocial-email"></div>
-  <a href="{{singlePCtrl.page.url}}" target="_blank"><div class="social zocial-yelp"></div></a>
-  <div class="social entypo-map hiddent"><a href=""></a></div>
-  <span id="change"><a href="tel:{{singlePCtrl.page.phone | tel}}"><div class="social entypo-phone"></div></a></span>
-</div>
 
 <footer>
 Copyright &copy; GI -

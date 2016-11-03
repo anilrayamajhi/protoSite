@@ -116,13 +116,13 @@ function pageController($state, $http){
       })
     }
 
-  // vm.destroyPage = function(page){
-  //   $http.delete('api/cars/'+page._id)
-  //     .success(function(data){
-  //       console.log(data);
-  //       vm.pages.splice(vm.pages.[indexOf(page)], 1)
-  //     })
-  // }
+  vm.destroyPage = function(page, index){
+    $http.delete('api/pages/'+page._id)
+      .success(function(data){
+        console.log(data);
+        vm.pages.splice(index, 1)
+      })
+  }
 }
 
 function singlePageController($state, $http, $stateParams){

@@ -108,6 +108,11 @@ function pageController($state, $http){
       vm.pages = data
     })
 
+  vm.checkContent = function(content){
+    console.log(content);
+    if(content != undefined){vm.createPage()}
+  }
+
   vm.createPage = function() {
     $http.post('/api/pages', vm.newPage)
       .success(function(data) {

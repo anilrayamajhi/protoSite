@@ -3,7 +3,7 @@
       <div class="intro-text">
           <div class="intro-heading">Site Engine</div>
           <div class="intro-lead-in" style="text-align:left;padding-left: 37px;">{{main.currentUser.username | uppercase}}</div>
-      <form ng-submit="pageCtrl.createPage()" class="col-md-12">
+      <form ng-submit="pageCtrl.checkContent(newPage)" class="col-md-12">
         <div class="input-group">
           <span class="input-group-addon" id="basic-addon3"><small><strong>https://www.yelp.com/biz/**GI**</strong></small></span><input ng-model="pageCtrl.newPage.pageUrl" class="form-control" type="url" name="name" placeholder="Image Link">
         </div><br>

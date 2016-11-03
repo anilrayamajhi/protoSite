@@ -108,13 +108,14 @@ function pageController($state, $http){
       vm.pages = data
     })
 
+  
+
   vm.createPage = function() {
     $http.post('/api/pages', vm.newPage)
       .success(function(data) {
-          console.log(data);
+          vm.pages = data;
       })
     }
-    $state.go('profile');
 }
 
 function singlePageController($state, $http, $stateParams){

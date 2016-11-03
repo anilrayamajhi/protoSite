@@ -24,7 +24,7 @@ function mainController($rootScope, $state, AuthService) {
     AuthService.getUserStatus()
       .then(function(data){
         vm.currentUser = data.data.user
-        console.log(data.data.user);
+        vm.$state = $state
       })
   })
 }

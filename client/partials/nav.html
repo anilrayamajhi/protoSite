@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-custom affix navbar-fixed-top">
+<nav ng-show="main.$state.includes('home') || main.$state.includes('profile')" class="navbar navbar-default navbar-custom affix navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
 
@@ -9,28 +9,15 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a ui-sref="home" class="navbar-brand">The Car Repo</a>
+      <a ui-sref="home" class="navbar-brand">ProtoSite</a>
     </div>
 
     <div class="collapse navbar-collapse" uib-collapse="navCollapsed">
       <!-- Main nav links -->
       <ul class="nav navbar-nav navbar-right">
-        <li><a ui-sref="home">Home</a></li>
         <li><a ui-sref="cars">Browse</a></li>
-        <li><a ui-sref="share">Share</a></li>
+        <li><a ui-sref="profile">{{main.currentUser.username | uppercase}}</a></li>
       </ul>
-
-      <!-- Filter Car List, only on 'cars' state -->
-      <form ng-show="main.$state.includes('profile')" class="navbar-form navbar-right">
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Filter List" ng-model="carFilter">
-          <div class="input-group-btn">
-            <button ng-click="carFilter = ''" ng-disabled="!carFilter" class="btn btn-default" type="button">
-              <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-            </button>
-          </div>
-        </div>
-      </form>
     </div>
   </div>
 </nav>

@@ -5,6 +5,7 @@
   font-family: 'zocial', sans-serif;
 }
 
+
 .nav, .pagination, .carousel, .panel-title a, *[ui-sref], *[href] { cursor: pointer; }
 
 .container {
@@ -81,18 +82,22 @@
 display: none;
 }
 
+.navigation-bar {
+  padding-top: 57px;
+}
+
 @media only screen and (max-width: 768px){
 
 #change {
 display: inline;
 }
 
+.navigation-bar {
+  padding-top: 17px;
+}
+
 .intro-text {
   color: rgba(0, 0, 0, 0.7);
 }
 
-}
-
-.navigation-bar {
-  padding-top: 37px;
 }

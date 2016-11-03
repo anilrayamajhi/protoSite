@@ -15,10 +15,11 @@
 </head>
 <body ng-controller="mainController as main">
   <div class="navigation-bar">
-    Logged in user: {{ main.currentUser.username }}
       <navigation-bar></navigation-bar>
       <div ui-view></div>
   </div>
+
+  <!-- {{ main.currentUser.username }} -->
 
 
   <script src="/vendor/angular.js" charset="utf-8"></script>

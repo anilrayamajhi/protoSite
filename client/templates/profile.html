@@ -5,7 +5,7 @@
           <div class="intro-lead-in" style="text-align:left;padding-left: 37px;">{{main.currentUser.username | uppercase}}</div>
       <form ng-submit="pageCtrl.checkContent(pageCtrl.newPage)" class="col-md-12">
         <div class="input-group">
-          <span class="input-group-addon" id="basic-addon3"><small><strong>https://www.yelp.com/biz/**GI**</strong></small></span><input ng-model="pageCtrl.newPage.pageUrl" class="form-control" type="url" name="name" placeholder="Image Link">
+          <span class="input-group-addon glyphicon glyphicon-link" id="basic-addon3"></span><input ng-model="pageCtrl.newPage.pageUrl" class="form-control" type="url" name="name" placeholder="Yelp Business Page">
         </div><br>
         <input type="submit" value="submit" class="btn page-scroll">
       </form>

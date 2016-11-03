@@ -42,14 +42,12 @@ function loginController($state, AuthService) {
     AuthService.login(vm.loginForm.username, vm.loginForm.password)
       // handle success
       .then(function () {
-        console.log("Successful login...")
         $state.go('profile')
         vm.disabled = false
         vm.loginForm = {}
       })
       // handle error
       .catch(function () {
-        console.log("Whoops...")
         vm.error = true
         vm.errorMessage = "Invalid username and/or password"
         vm.disabled = false
@@ -108,11 +106,11 @@ function pageController($state, $http){
     })
 
   vm.checkContent = function(content){
-    console.log("*******************");
+    console.log("****************************");
     console.log(content.pageUrl);
     console.log(content.pageUrl.slice(0,25));
     console.log(content);
-    console.log("*********************");
+    console.log("*****************************");
     if((content != undefined)&&(content.pageUrl.slice(0,25) == "https://www.yelp.com/biz/")){vm.createPage()}
   }
 

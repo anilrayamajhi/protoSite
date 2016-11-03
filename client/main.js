@@ -1,6 +1,9 @@
-var myApp = angular.module('myApp', ['ui.router', 'ui.bootstrap'])
+var myApp=angular.module('myApp', ['ui.router', 'ui.bootstrap'])
+  .directive('navigationBar', navigationBar)
 
 myApp.config(function ($stateProvider, $urlRouterProvider) {
+
+  // $locationProvider.html5Mode(true)
 
   $urlRouterProvider.otherwise('/')
 
@@ -50,3 +53,11 @@ myApp.run(function ($rootScope, $location, $state, AuthService) {
     })
   })
 })
+
+
+function navigationBar() {
+  return {
+    restrict: 'E',
+    templateUrl: 'partials/nav.html'
+  }
+}

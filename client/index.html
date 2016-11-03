@@ -13,11 +13,11 @@
   <!-- <script src="script-tags-for-development.js"></script> -->
   <link rel="icon" href="image/favicon.ico" type="icon"/>
 </head>
-<body>
-
-  <div ng-controller="mainController as main">
+<body ng-controller="mainController as main">
+  <div class="navigation-bar">
     Logged in user: {{ main.currentUser.username }}
-    <div ui-view></div>
+      <navigation-bar></navigation-bar>
+      <div ui-view></div>
   </div>
 
 

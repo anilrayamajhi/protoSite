@@ -115,6 +115,14 @@ function pageController($state, $http){
           $state.reload();
       })
     }
+
+  // vm.destroyPage = function(page){
+  //   $http.delete('api/cars/'+page._id)
+  //     .success(function(data){
+  //       console.log(data);
+  //       vm.pages.splice(vm.pages.[indexOf(page)], 1)
+  //     })
+  // }
 }
 
 function singlePageController($state, $http, $stateParams){

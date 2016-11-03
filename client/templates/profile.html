@@ -23,7 +23,7 @@
         <div class="" ui-sref="page({id: page._id})">
           <small><strong>Created: <br />{{page.updatedAt | date: "MM/dd/yyyy 'at' h:mma"}}</strong></small>
         </div>
-        <div class="social entypo-trash" style="float:right;"></div>
+        <div ng-click="pageCtrl.destroyPage(page)" class="social entypo-trash" style="float:right;"></div>
         <a href="{{page.pageUrl}}" target="_blank"><div class="social zocial-yelp" style="float:right;"></div></a>
 
     </div>

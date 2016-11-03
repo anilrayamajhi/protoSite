@@ -104,13 +104,16 @@ function pageController($state, $http){
 
   $http.get('/api/pages')
     .success(function(data) {
-      console.log(data);
       vm.pages = data
     })
 
   vm.checkContent = function(content){
+    console.log("*******************");
+    console.log(content.pageUrl);
+    console.log(content.pageUrl.slice(0,25));
     console.log(content);
-    if(content != undefined){vm.createPage()}
+    console.log("*********************");
+    if((content != undefined)&&(content.pageUrl.slice(0,25) == "https://www.yelp.com/biz/")){vm.createPage()}
   }
 
   vm.createPage = function() {

@@ -9,40 +9,28 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a ui-sref="home" class="navbar-brand">{{singlePCtrl.page.name}}</a>
+      <a class="navbar-brand" href="#/page/{{singlePCtrl.id}}#front">{{singlePCtrl.page.name}}</a>
     </div>
 
     <div class="collapse navbar-collapse" uib-collapse="navCollapsed">
       <!-- Main nav links -->
       <ul class="nav navbar-nav navbar-right">
-        <li><a ui-sref="home">Home</a></li>
+        <li><a href="#/page/{{singlePCtrl.id}}#front">Home</a></li>
         <li><a ui-sref="cars">Browse</a></li>
-        <li><a class="underlined-example" href="#contacts">Contacts</a></li>
+        <li><a href="#/page/{{singlePCtrl.id}}#contacts">Contacts</a></li>
       </ul>
-
-      <!-- Filter Car List, only on 'cars' state -->
-      <form ng-show="main.$state.includes('cars')" class="navbar-form navbar-right">
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Filter List" ng-model="carFilter">
-          <div class="input-group-btn">
-            <button ng-click="carFilter = ''" ng-disabled="!carFilter" class="btn btn-default" type="button">
-              <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-            </button>
-          </div>
-        </div>
-      </form>
     </div>
   </div>
 </nav>
 
 
 <!-- Header -->
-<header>
+<header id="front">
     <div class="container">
         <div class="intro-text">
-            <div class="intro-lead-in">An Online Car Convention</div>
-            <div class="intro-heading">The Car Repo</div>
-            <a ui-sref="cars" class="page-scroll btn btn-xl">Browse Dream Cars</a>
+            <div class="intro-lead-in"></div>
+            <div class="intro-heading">{{singlePCtrl.page.name}}</div>
+            <a href="#/page/{{singlePCtrl.id}}#contacts" class="page-scroll btn btn-xl">Find Us</a>
         </div>
     </div>
 </header>
@@ -51,25 +39,50 @@
   <div class="row">
 
     {{3+4}}
-    <p class="hidden">{{singlePCtrl.page.location.display_address[0]}}</p>
-    <p class="">{{singlePCtrl.page.name}}</p>
+    <p class="hidden add">
+      {{singlePCtrl.page.location.display_address[0]}}
+    </p>
+    <p class="hidden nam">
+      {{singlePCtrl.page.name}}
+    </p>
+    <br><br>
+
   </div>
-  <button class="hiddent btn btn-info" type="button" name="button">Map View</button><br><br>
   <div class="map" style="height: 500px" id="map"></div>
 </div>
+<br><br>
 
+
+
+<div id="contacts">
+  <div class="social entypo-facebook-squared"><a href="" target="_blank"></a></div>
+  <div class="social zocial-email"></div>
+  <a href="{{singlePCtrl.page.url}}" target="_blank"><div class="social zocial-yelp"></div></a>
+  <div class="social entypo-map hiddent"><a href=""></a></div>
+  <span id="change"><a href="tel:{{singlePCtrl.page.phone | tel}}"><div class="social entypo-phone"></div></a></span>
+</div>
+
+<footer>
+Copyright &copy; GI -
+<a href="https://www.yelp.com/biz/tsujita-la-artisan-noodle-los-angeles-2?adjust_creative=6GAeCDJ4CF0tZaM0UsW4uA&utm_campaign=yelp_api&utm_medium=api_v2_business&utm_source=6GAeCDJ4CF0tZaM0UsW4uA">{{singlePCtrl.page.name}}</a><br>
+{{singlePCtrl.page.location.display_address[0]}}<br />
+{{singlePCtrl.page.location.display_address[2]}}<br />
+{{singlePCtrl.page.phone | tel}}
+    </div>
+  </div>
+</footer>
 <script>
   var map;
   var geoLocation;
-  var name;
+  var nameLocation;
   $('body').on('click', '.hiddent', function(evt){
-    geoLocation= $('.hidden').text();
+    geoLocation= $('.add').text();
+    nameLocation= $('.nam').text();
     $('#map').toggleClass('map');
-    console.log(geoLocation);
-    getAddress(geoLocation);
+    getAddress(geoLocation, nameLocation);
 })
 
-  function getAddress(searchAddress) {
+  function getAddress(searchAddress, nameLoc) {
     $.get('https://maps.googleapis.com/maps/api/geocode/json?address='+searchAddress)
     .success(function(data) {
       // console.log("Latitude:", data.results[0].geometry.location.lat)
@@ -87,7 +100,7 @@
         position: geocodedAddress,
         map: myMap,
       });
-      var contentString = "<h1>"++"</h1>"
+      var contentString = "<strong>"+nameLoc+"</strong><br /><em>"+searchAddress+"</em>"
       var infowindow = new google.maps.InfoWindow({
          content: contentString
        });

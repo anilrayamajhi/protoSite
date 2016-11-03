@@ -112,9 +112,9 @@ function pageController($state, $http){
     $http.post('/api/pages', vm.newPage)
       .success(function(data) {
           console.log(data);
-          // $state.go('cars')
       })
     }
+    $state.go('profile');
 }
 
 function singlePageController($state, $http, $stateParams){

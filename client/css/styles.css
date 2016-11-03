@@ -38,6 +38,8 @@
 
 .page-scroll {
   width: 177px;
+  background-color: #760926;
+  color: white;
 }
 
 #contacts {
@@ -60,6 +62,7 @@
   overflow: hidden;
   cursor: pointer;
   box-shadow: 7px 7px 7px #d2d2d2;
+  color: #760926;
 }
 
 .social:hover {

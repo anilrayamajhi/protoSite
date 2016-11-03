@@ -15,7 +15,7 @@
     <div class="collapse navbar-collapse" uib-collapse="navCollapsed">
       <!-- Main nav links -->
       <ul class="nav navbar-nav navbar-right">
-        <li><a ui-sref="cars">Browse</a></li>
+        <li><a href="#/page/{{singlePCtrl.id}}#browse">Browse</a></li>
         <li><a href="#/page/{{singlePCtrl.id}}#contacts">Contacts</a></li>
       </ul>
     </div>
@@ -46,7 +46,7 @@
 
   </div>
 
-<div class="row jumbotron">
+<div class="row jumbotron" id="browse">
   <div class="intro-text">
     <div class="col-md-6 col-md-offset-6">
       Speciality:<br><br>
@@ -59,12 +59,12 @@
 
 <br><br><br><br><br><br>
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-2">
       <strong>{{singlePCtrl.page.reviews[0].user.name}}</strong><br><br>
       <img src="{{singlePCtrl.page.reviews[0].user.image_url}}" alt="" /><br />
       <img src="{{singlePCtrl.page.reviews[0].rating_image_small_url}}" alt="" />
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
       <br><br>
       <p>
         {{singlePCtrl.page.reviews[0].excerpt}}
@@ -89,7 +89,7 @@
 
 <footer>
 Copyright &copy; GI -
-<a href="https://www.yelp.com/biz/tsujita-la-artisan-noodle-los-angeles-2?adjust_creative=6GAeCDJ4CF0tZaM0UsW4uA&utm_campaign=yelp_api&utm_medium=api_v2_business&utm_source=6GAeCDJ4CF0tZaM0UsW4uA">{{singlePCtrl.page.name}}</a><br>
+<a href="https://www.yelp.com/biz/tsujita-la-artisan-noodle-los-angeles-2?adjust_creative=6GAeCDJ4CF0tZaM0UsW4uA&utm_campaign=yelp_api&utm_medium=api_v2_business&utm_source=6GAeCDJ4CF0tZaM0UsW4uA" target="_blank">{{singlePCtrl.page.name}}</a><br>
 {{singlePCtrl.page.location.display_address[0]}}<br />
 {{singlePCtrl.page.location.display_address[2]}}<br />
 {{singlePCtrl.page.phone | tel}}

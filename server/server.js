@@ -16,7 +16,7 @@ var
   passportConfig = require('./config/passport.js'),
   request = require('request'),
   Yelp = require('yelp'),
-
+  MongoStore = require('connect-mongo')(expressSession),
   // user schema/model
   User = require('./models/User.js'),
 
@@ -68,7 +68,8 @@ app.use(cookieParser())
 app.use(require('express-session')({
     secret: 'GI',
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    store: new MongoStore({url: mongoConnection})
 }))
 app.use(passport.initialize())
 app.use(passport.session())

@@ -14,7 +14,6 @@ var
   path = require('path'),
   passport = require('passport'),
   passportConfig = require('./config/passport.js'),
-  request = require('request'),
   Yelp = require('yelp'),
   MongoStore = require('connect-mongo')(expressSession),
   // user schema/model

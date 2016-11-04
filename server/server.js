@@ -1,4 +1,4 @@
-
+console.log("App started");
 //Dependencies
 var
   dotenv = require('dotenv').load({silent: true}),

@@ -25,6 +25,7 @@ module.exports = {
 
 function index(req, res) {
   Page.find({}).sort({createdAt: 'desc'}).populate('_by User').exec(function(err, pages) {
+    if(req.user === undefined) return res.json({message:"need user"});
     console.log(req.user._id);
     // console.log(pages);
     // console.log(_.where(pages, {_by}));

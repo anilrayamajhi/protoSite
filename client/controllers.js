@@ -13,7 +13,7 @@ angular.module('myApp')
   loginController.$inject = ['$state', 'AuthService']
   logoutController.$inject = ['$state', 'AuthService']
   registerController.$inject = ['$state', 'AuthService']
-  pageController.$inject = ['$state', '$http']
+  pageController.$inject = ['$state', '$http', 'AuthService']
   singlePageController.$inject = ['$state', '$http', '$stateParams']
 
 
@@ -97,8 +97,13 @@ function registerController($state, AuthService) {
   }
 }
 
-function pageController($state, $http){
+function pageController($state, $http, AuthService){
   var vm = this
+
+  AuthService.getUserStatus()
+    .then(function(data){
+      if(!data.data.user){$state.go('login')}
+    })
 
   $http.get('/api/pages')
     .success(function(data) {
@@ -111,7 +116,12 @@ function pageController($state, $http){
     console.log(content.pageUrl.slice(0,25));
     console.log(content);
     console.log("*****************************");
+    vm.invalidUrl = false;
     if((content != undefined)&&(content.pageUrl.slice(0,25) == "https://www.yelp.com/biz/")){vm.createPage()}
+    else{
+      console.log("not a valid url");
+      vm.invalidUrl = true;
+    }
   }
 
   vm.createPage = function() {

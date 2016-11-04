@@ -113,10 +113,11 @@ function pageController($state, $http, AuthService){
 
   $http.get('/api/pages')
     .success(function(data) {
+      console.log("********");
       console.log(data);
-      vm.pages = data
+      console.log("********");
+      vm.pages = data.map(function(el){if(el!=null){return el}})
     })
-    console.log("pageController");
 
   vm.checkContent = function(content){
     vm.invalidUrl = false;

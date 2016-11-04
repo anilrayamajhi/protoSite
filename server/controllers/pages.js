@@ -30,9 +30,9 @@ function index(req, res) {
     // console.log(pages);
     // console.log(_.where(pages, {_by}));
     if(err) return console.log(err)
-    res.json(pages)
-    console.log(_.map(pages, function(el){if((el._by._id).toString() == req.user._id){return el}}).compact());
-    // res.json(_.map(pages, function(el){if((el._by._id).toString() == req.user._id){return el}}).compact())
+    newArr = _.map(pages, function(el){if((el._by._id).toString() == req.user._id){return el}});
+    console.log(_.compact(newArr));
+    res.json(newArr);
   })
 }
 

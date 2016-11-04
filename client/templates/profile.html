@@ -16,8 +16,9 @@
   </div>
 </header>
 <br><br><br><br>
-<div class="container well" ng-repeat="page in pageCtrl.pages">
-  <div class="row">
+<div ng-repeat="page in pageCtrl.pages track by $index">
+  <div class="well" ng-if="page != null">
+  <div class="row" >
     <div class="col-md-4" ui-sref="page({id: page._id})">
       <strong>{{page.pageUrl.slice(25).split("-").slice(0,2).join(" ")}}</strong>
     </div>
@@ -30,5 +31,6 @@
         <a href="{{page.pageUrl}}" target="_blank"><div class="social zocial-yelp" style="float:right;"></div></a>
 
     </div>
+  </div>
   </div>
 </div>

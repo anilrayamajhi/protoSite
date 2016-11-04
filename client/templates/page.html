@@ -36,15 +36,16 @@
 
 <div class="container" id="browse">
   <div class="row">
-    <p class="hidden add">
+    <p class="hidden addFirst">
       {{singlePCtrl.page.location.display_address[0]}}
+    </p>
+    <p class="hidden addSec">
+      {{singlePCtrl.page.location.display_address[2]}}
     </p>
     <p class="hidden nam">
       {{singlePCtrl.page.name}}
     </p>
     <br><br>
-
-  </div>
 
 <div class="row jumbotron">
   <div class="intro-text">
@@ -93,27 +94,28 @@ Copyright &copy; GI -
 {{singlePCtrl.page.location.display_address[0]}}<br />
 {{singlePCtrl.page.location.display_address[2]}}<br />
 {{singlePCtrl.page.phone | tel}}
-    </div>
-  </div>
 </footer>
 <script>
   var map;
-  var geoLocation;
+  var firstAdd;
+  var secondAdd;
   var nameLocation;
   $('body').on('click', '.hiddent', function(evt){
-    geoLocation= $('.add').text();
+    firstAdd= $('.addFirst').text();
+    secondAdd= $('.addSec').text();
+    console.log(secondAdd);
     nameLocation= $('.nam').text();
     $('#map').toggleClass('map');
-    getAddress(geoLocation, nameLocation);
+    getAddress(firstAdd, secondAdd, nameLocation);
 })
 
-  function getAddress(searchAddress, nameLoc) {
-    $.get('https://maps.googleapis.com/maps/api/geocode/json?address='+searchAddress)
+  function getAddress(firstAdd, secondAdd, nameLoc) {
+    $.get('https://maps.googleapis.com/maps/api/geocode/json?address='+firstAdd+" "+secondAdd)
     .success(function(data) {
       // console.log("Latitude:", data.results[0].geometry.location.lat)
       // console.log("Longitute:", data.results[0].geometry.location.lng)
 
-      var geocodedAddress =  data.results[0].geometry.location
+      var geocodedAddress = data.results[0].geometry.location;
       // console.log(geocodedAddress);
       // console.log(data.results[0].geometry.location);
       myMap = new google.maps.Map(document.getElementById('map'), {
@@ -125,7 +127,7 @@ Copyright &copy; GI -
         position: geocodedAddress,
         map: myMap,
       });
-      var contentString = "<strong>"+nameLoc+"</strong><br /><em>"+searchAddress+"</em>"
+      var contentString = "WOOHOO!!<br><strong>"+nameLoc+"</strong><br /><em>"+firstAdd + " " +secondAdd+"</em>"
       var infowindow = new google.maps.InfoWindow({
          content: contentString
        });

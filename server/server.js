@@ -27,7 +27,7 @@ var
   mongoConnection = process.env.MONGO_URL,
 
 //Port declaration
-  PORT = process.env.port || 7000
+  PORT = process.env.PORT || 7000
 
 //Yelp API Aouth Token
   var yelp = new Yelp({

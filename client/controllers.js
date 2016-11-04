@@ -42,7 +42,7 @@ function loginController($state, AuthService) {
     AuthService.login(vm.loginForm.username, vm.loginForm.password)
       // handle success
       .then(function () {
-        $state.go('profile')
+        $state.go('home')
         vm.disabled = false
         vm.loginForm = {}
       })

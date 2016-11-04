@@ -1,9 +1,12 @@
-/*@import url("//weloveiconfonts.com/api/?family=entypo");*/
-@import url('//myserver.com/entypo.css');
-@import url("//weloveiconfonts.com/api/?family=zocial");
+
+@import url(//weloveiconfonts.com/api/?family=entypo|zocial);
 
 [class*="zocial-"]:before {
   font-family: 'zocial', sans-serif;
+}
+
+[class*="entypo-"]:before {
+  font-family: 'entypo', sans-serif;
 }
 
 

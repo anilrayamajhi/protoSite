@@ -1,9 +1,9 @@
 @import url("http://weloveiconfonts.com/api/?family=entypo");
-/*@import url("http://weloveiconfonts.com/api/?family=zocial");
+@import url("http://weloveiconfonts.com/api/?family=zocial");
 
 [class*="zocial-"]:before {
   font-family: 'zocial', sans-serif;
-}*/
+}
 
 
 .nav, .pagination, .carousel, .panel-title a, *[ui-sref], *[href] { cursor: pointer; }

@@ -1,7 +1,6 @@
 var
   Page = require('../models/Page.js'),
   User = require('../models/User.js'),
-  request = require('request'),
   Yelp = require('yelp'),
   _ = require('underscore')
 

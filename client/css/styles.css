@@ -88,6 +88,10 @@ display: none;
 
 @media only screen and (max-width: 768px){
 
+.trust .navHome{
+  width: 100%;
+}
+
 #change {
 display: inline;
 }

@@ -21,11 +21,6 @@
       </div>
     </div>
   </div>
-  <div class="bd-example bd-example-padded-bottom">
-    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#gridSystemModal">
-      About nUPath
-    </button>
-  </div>
 
 
 
@@ -42,10 +37,11 @@
               <input type="password" class="form-control" name="password" ng-model="loginCtrl.loginForm.password" required><span class="entypo-key input-group-addon"></span>
             </div><br><br>
             <div>
-              <button type="submit" class="btn page-scroll" ng-disabled="loginCtrl.disabled">Login</button>&emsp;
-              <button type="submit" class="btn page-scroll" ng-disabled="loginCtrl.disabled">Register</button>
+              <button type="submit" class="btn page-scroll" ng-disabled="loginCtrl.disabled">Login</button>
             </div>
         </form>
+        <br>
+        <button class="btn page-scroll" data-toggle="modal" data-target="#gridSystemModal">Register</button>
       </div>
       <div class="col-md-5 col-sm-5 col-md-offset-2 col-sm-offset-2"><div class="loginImg"></div></div>
     </div>

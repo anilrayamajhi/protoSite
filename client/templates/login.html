@@ -1,59 +1,45 @@
-
-
-<div id="gridSystemModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <!-- <div class="modal-content"> -->
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h2 class="modal-title" id="gridModalLabel">nUPath</h2>
-        </div>
-        <div class="modal-body">
-          <div class="container-fluid bd-example-row">
-            <h1>Register</h1>
-            <div ng-show="registerCtrl.error" class="alert alert-danger">{{registerCtrl.errorMessage}}</div>
-            <form class="form" ng-submit="registerCtrl.register()">
-              <div class="form-group">
-                <label>Username</label>
-                <input type="text" class="form-control" name="username" ng-model="registerCtrl.registerForm.username" required>
-              </div>
-              <div class="form-group">
-                <label>Password</label>
-                  <input type="password" class="form-control" name="password" ng-model="registerCtrl.registerForm.password" required>
-                </div>
-                <div>
-                  <button type="submit" class="btn btn-default" ng-disabled="registerCtrl.disabled">Register</button>
-                </div>
-            </form>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      <!-- </div> -->
-    </div>
-  </div>
-
-
-
 <div class="container">
-    <h1>Login</h1>
     <div class=" row">
       <div class="col-md-5 col-sm-5">
-        <div ng-show="loginCtrl.error" class="alert alert-danger">{{ loginCtrl.errorMessage }}</div>
-        <form ng-submit="loginCtrl.login()">
+        <div ng-show = "loginCtrl.selected">
+          <h1>Login</h1>
+          <div ng-show="loginCtrl.error" class="alert alert-danger">{{ loginCtrl.errorMessage }}</div>
+          <form ng-submit="loginCtrl.login()">
+            <div class="input-group">
+              <input type="text" class="form-control" name="username" ng-model="loginCtrl.loginForm.username" required><span class="input-group-addon zocial-guest" id="basic-addon3"></span>
+            </div><br><br>
+            <div class="input-group">
+                <input type="password" class="form-control" name="password" ng-model="loginCtrl.loginForm.password" required><span class="entypo-key input-group-addon"></span>
+              </div><br><br>
+              <div>
+                <button type="submit" class="btn page-scroll" ng-disabled="loginCtrl.disabled">Login</button>
+              </div>
+          </form>
+          <br>
+          <button class="btn btn-link" data-toggle="modal" data-target="#gridSystemModal" ng-click="loginCtrl.status()">Register Me..</button>
+        </div>
+
+
+
+
+
+        <div ng-hide="loginCtrl.selected" ng-controller="registerController as registerCtrl">
+          <h1>Register</h1>
+        <div ng-show="registerCtrl.error" class="alert alert-danger">{{registerCtrl.errorMessage}}</div>
+        <form ng-submit="registerCtrl.register()">
           <div class="input-group">
-            <input type="text" class="form-control" name="username" ng-model="loginCtrl.loginForm.username" required><span class="input-group-addon zocial-guest" id="basic-addon3"></span>
+            <input type="text" class="form-control" name="username" ng-model="registerCtrl.registerForm.username" required><span class="input-group-addon zocial-guest"></span>
           </div><br><br>
+
           <div class="input-group">
-              <input type="password" class="form-control" name="password" ng-model="loginCtrl.loginForm.password" required><span class="entypo-key input-group-addon"></span>
+              <input type="password" class="form-control" name="password" ng-model="registerCtrl.registerForm.password" required><span class="entypo-key input-group-addon"></span>
             </div><br><br>
             <div>
-              <button type="submit" class="btn page-scroll" ng-disabled="loginCtrl.disabled">Login</button>
+              <button type="submit" class="btn page-scroll" ng-disabled="registerCtrl.disabled">Register</button>
             </div>
         </form>
-        <br>
-        <button class="btn page-scroll" data-toggle="modal" data-target="#gridSystemModal">Register</button>
       </div>
+    </div>
       <div class="col-md-5 col-sm-5 col-md-offset-2 col-sm-offset-2"><div class="loginImg"></div></div>
     </div>
 </div>

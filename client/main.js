@@ -22,11 +22,11 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
       url: '/logout',
       controller: 'logoutController'
     })
-    .state('register', {
-      url: '/register',
-      templateUrl: 'templates/register.html',
-      controller: 'registerController as registerCtrl'
-    })
+    // .state('register', {
+    //   url: '/register',
+    //   templateUrl: 'templates/register.html',
+    //   controller: 'registerController as registerCtrl'
+    // })
     .state('page', {
       url: '/page/:id',
       templateUrl: 'templates/page.html',

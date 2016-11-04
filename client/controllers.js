@@ -32,6 +32,7 @@ function mainController($rootScope, $state, AuthService) {
 // LOGIN CONTROLLER:
 function loginController($state, AuthService) {
   var vm = this
+  vm.selected = true;
   vm.login = function () {
 
     // initial values
@@ -53,6 +54,11 @@ function loginController($state, AuthService) {
         vm.disabled = false
         vm.loginForm = {}
       })
+  }
+
+  vm.status = function(){
+    console.log("vm.selected set to false");
+    vm.selected = false;
   }
 }
 
@@ -83,7 +89,7 @@ function registerController($state, AuthService) {
     AuthService.register(vm.registerForm.username, vm.registerForm.password)
       // handle success
       .then(function () {
-        $state.go('profile')
+        $state.go('home');
         vm.disabled = false
         vm.registerForm = {}
       })
@@ -107,8 +113,10 @@ function pageController($state, $http, AuthService){
 
   $http.get('/api/pages')
     .success(function(data) {
+      console.log(data);
       vm.pages = data
     })
+    console.log("pageController");
 
   vm.checkContent = function(content){
     vm.invalidUrl = false;

@@ -1,5 +1,5 @@
 /*@import url("//weloveiconfonts.com/api/?family=entypo");*/
-@import url('http://myserver.com/entypo.css');
+@import url('//myserver.com/entypo.css');
 @import url("//weloveiconfonts.com/api/?family=zocial");
 
 [class*="zocial-"]:before {

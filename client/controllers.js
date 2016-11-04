@@ -111,13 +111,12 @@ function pageController($state, $http, AuthService){
     })
 
   vm.checkContent = function(content){
-    console.log("****************************");
-    console.log(content.pageUrl);
-    console.log(content.pageUrl.slice(0,25));
-    console.log(content);
-    console.log("*****************************");
     vm.invalidUrl = false;
-    if((content != undefined)&&(content.pageUrl.slice(0,25) == "https://www.yelp.com/biz/")){vm.createPage()}
+    if(content == undefined){
+      console.log("its fkin empty man");
+      vm.invalidUrl = true;
+    }
+    else if(content.pageUrl.slice(0,25) == "https://www.yelp.com/biz/"){vm.createPage()}
     else{
       console.log("not a valid url");
       vm.invalidUrl = true;

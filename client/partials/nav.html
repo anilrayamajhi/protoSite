@@ -17,6 +17,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a ui-sref="cars">Browse</a></li>
         <li><a ui-sref="profile">{{main.currentUser.username | uppercase}}</a></li>
+        <li ng-controller="logoutController as logoutCtrl"><a ng-click="logoutCtrl.logout()">Logout</a></li>
       </ul>
     </div>
   </div>

@@ -1,25 +1,25 @@
 <nav class="navbar navbar-default navbar-custom affix navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
+    <div class="container-fluid">
+        <div class="navbar-header">
 
-      <!-- Mobile Nav Button -->
-      <button ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed" class="navbar-toggle">
+            <!-- Mobile Nav Button -->
+            <button ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed" class="navbar-toggle">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#/page/{{singlePCtrl.id}}#front">{{singlePCtrl.page.name}}</a>
-    </div>
+            <a class="navbar-brand" href="#/page/{{singlePCtrl.id}}#front">{{singlePCtrl.page.name}}</a>
+        </div>
 
-    <div class="collapse navbar-collapse" uib-collapse="navCollapsed">
-      <!-- Main nav links -->
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#/page/{{singlePCtrl.id}}#browse">Browse</a></li>
-        <li><a href="#/page/{{singlePCtrl.id}}#contacts">Contacts</a></li>
-      </ul>
+        <div class="collapse navbar-collapse" uib-collapse="navCollapsed">
+            <!-- Main nav links -->
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#/page/{{singlePCtrl.id}}#browse">Browse</a></li>
+                <li><a href="#/page/{{singlePCtrl.id}}#contacts">Contacts</a></li>
+            </ul>
+        </div>
     </div>
-  </div>
 </nav>
 
 
@@ -35,106 +35,114 @@
 </header>
 
 <div class="container" id="browse">
-  <div class="row">
-    <p class="hidden addFirst">
-      {{singlePCtrl.page.location.display_address[0]}}
-    </p>
-    <p class="hidden addSec">
-      {{singlePCtrl.page.location.display_address[2]}}
-    </p>
-    <p class="hidden nam">
-      {{singlePCtrl.page.name}}
-    </p>
-    <br><br>
+    <div class="row">
+        <p class="hidden addFirst">
+            {{singlePCtrl.page.location.display_address[0]}}
+        </p>
+        <p class="hidden addSec">
+            {{singlePCtrl.page.location.display_address[2]}}
+        </p>
+        <p class="hidden nam">
+            {{singlePCtrl.page.name}}
+        </p>
+        <br><br>
 
-<div class="row jumbotron">
-  <div class="intro-text">
-    <div class="col-md-6 col-md-offset-6">
-      Speciality:<br><br>
-      <div class="list-group-item list-group-item-danger" ng-repeat="cat in singlePCtrl.page.categories">
-        {{cat[0]}}
-      </div>
-    </div>
-  </div>
+        <div class="row jumbotron">
+            <div class="intro-text">
+                <div class="col-md-6 col-md-offset-6">
+                    Speciality:<br><br>
+                    <div class="list-group-item list-group-item-danger" ng-repeat="cat in singlePCtrl.page.categories">
+                        {{cat[0]}}
+                    </div>
+                </div>
+            </div>
+        </div>
 </div>
-
-<br><br><br><br><br><br>
-  <div class="row">
-    <div class="col-md-2">
-      <strong>{{singlePCtrl.page.reviews[0].user.name}}</strong><br><br>
-      <img src="{{singlePCtrl.page.reviews[0].user.image_url}}" alt="" /><br />
-      <img src="{{singlePCtrl.page.reviews[0].rating_image_small_url}}" alt="" />
+        <br><br><br><br><br><br>
+        <div class="row">
+            <div class="col-md-2">
+                <strong>{{singlePCtrl.page.reviews[0].user.name}}</strong><br><br>
+                <img src="{{singlePCtrl.page.reviews[0].user.image_url}}" alt="" /><br />
+                <img src="{{singlePCtrl.page.reviews[0].rating_image_small_url}}" alt="" />
+            </div>
+            <div class="col-md-4">
+                <br><br>
+                <p>
+                    {{singlePCtrl.page.reviews[0].excerpt}}
+                </p>
+                <div class="col-md-offset-6 list-group-item list-group-item-info">
+                    {{singlePCtrl.page.reviews[0].time_created | date:"MM/dd/yyyy 'at' h:mma"}}
+                </div>
+            </div>
+        </div>
+        <br><br><br>
+        <div class="map" style="height: 500px" id="map"></div>
+        <br><br>
+        <div id="contacts">
+            <div class="social entypo-facebook-squared">
+                <a href="" target="_blank"></a>
+            </div>
+            <div class="social zocial-email"></div>
+            <a href="{{singlePCtrl.page.url}}" target="_blank">
+                <div class="social zocial-yelp"></div>
+            </a>
+            <div class="social entypo-map hiddent">
+                <a href=""></a>
+            </div>
+            <span id="change"><a href="tel:{{singlePCtrl.page.phone | tel}}"><div class="social entypo-phone"></div></a></span>
+        </div>
     </div>
-    <div class="col-md-4">
-      <br><br>
-      <p>
-        {{singlePCtrl.page.reviews[0].excerpt}}
-      </p>
-      <div class="col-md-offset-6 list-group-item list-group-item-info">
-        {{singlePCtrl.page.reviews[0].time_created | date:"MM/dd/yyyy 'at' h:mma"}}
-      </div>
-    </div>
-  </div>
-<br><br><br>
-  <div class="map" style="height: 500px" id="map"></div>
-  <br><br>
-  <div id="contacts">
-    <div class="social entypo-facebook-squared"><a href="" target="_blank"></a></div>
-    <div class="social zocial-email"></div>
-    <a href="{{singlePCtrl.page.url}}" target="_blank"><div class="social zocial-yelp"></div></a>
-    <div class="social entypo-map hiddent"><a href=""></a></div>
-    <span id="change"><a href="tel:{{singlePCtrl.page.phone | tel}}"><div class="social entypo-phone"></div></a></span>
-  </div>
-</div>
 
 
-<footer>
-Copyright &copy; GI -
-<a href="{{singlePCtrl.page.url}}" target="_blank">{{singlePCtrl.page.name}}</a><br>
-{{singlePCtrl.page.location.display_address[0]}}<br />
-{{singlePCtrl.page.location.display_address[2]}}<br />
-{{singlePCtrl.page.phone | tel}}
-</footer>
-<script>
-  var map;
-  var firstAdd;
-  var secondAdd;
-  var nameLocation;
-  $('body').on('click', '.hiddent', function(evt){
-    firstAdd= $('.addFirst').text();
-    secondAdd= $('.addSec').text();
-    nameLocation= $('.nam').text();
-    $('#map').toggleClass('map');
-    getAddress(firstAdd, secondAdd, nameLocation);
-})
+    <footer>
+        Copyright &copy; GI -
+        <a href="{{singlePCtrl.page.url}}" target="_blank">{{singlePCtrl.page.name}}</a><br> {{singlePCtrl.page.location.display_address[0]}}
+        <br /> {{singlePCtrl.page.location.display_address[2]}}
+        <br /> {{singlePCtrl.page.phone | tel}}
+    </footer>
+    <script>
+        var map;
+        var comAdd;
+        // var secondAdd;
+        var nameLocation;
+        $('body').on('click', '.hiddent', function(evt) {
+            comAdd = $('.addFirst').text();
+            comAdd += " ";
+            comAdd += $('.addSec').text();
+            // secondAdd = $('.addSec').text();
+            nameLocation = $('.nam').text();
+            $('#map').toggleClass('map');
+            getAddress(comAdd, nameLocation);
+        })
 
-  function getAddress(firstAdd, secondAdd, nameLoc) {
-    $.get('https://maps.googleapis.com/maps/api/geocode/json?address='+firstAdd+" "+secondAdd)
-    .success(function(data) {
-      // console.log("Latitude:", data.results[0].geometry.location.lat)
-      // console.log("Longitute:", data.results[0].geometry.location.lng)
+        function getAddress(comAd, nameLoc) {
+            $.get('https://maps.googleapis.com/maps/api/geocode/json?address='+comAd)
+                .success(function(data) {
+                    // console.log("Latitude:", data.results[0].geometry.location.lat)
+                    // console.log("Longitute:", data.results[0].geometry.location.lng)
+                    console.log("***************");
+                    console.log(data);
 
-      var geocodedAddress = data.results[0].geometry.location;
-      // console.log(geocodedAddress);
-      // console.log(data.results[0].geometry.location);
-      myMap = new google.maps.Map(document.getElementById('map'), {
-        center: geocodedAddress,
-        zoom: 17,
-        content: 'Ganey'
-      });
-      var marker = new google.maps.Marker({
-        position: geocodedAddress,
-        map: myMap,
-      });
-      var contentString = "WOOHOO!!<br><strong>"+nameLoc+"</strong><br /><em>"+firstAdd + " " +secondAdd+"</em>"
-      var infowindow = new google.maps.InfoWindow({
-         content: contentString
-       });
-      marker.addListener('click', function() {
-        infowindow.open(map, marker);
-  });
-    })
-  }
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGpU5i66YurDTpGk9tb9DLhoBGKPzxUBE&callback=getAddress"
-    async defer></script>
+                    var geocodedAddress = data.results[0].geometry.location;
+                    // console.log(geocodedAddress);
+                    // console.log(data.results[0].geometry.location);
+                    myMap = new google.maps.Map(document.getElementById('map'), {
+                        center: geocodedAddress,
+                        zoom: 17,
+                        content: 'Ganey'
+                    });
+                    var marker = new google.maps.Marker({
+                        position: geocodedAddress,
+                        map: myMap,
+                    });
+                    var contentString = "WOOHOO!!<br><strong>" + nameLoc + "</strong><br /><em>" + comAd+ "</em>"
+                    var infowindow = new google.maps.InfoWindow({
+                        content: contentString
+                    });
+                    marker.addListener('click', function() {
+                        infowindow.open(map, marker);
+                    });
+                })
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGpU5i66YurDTpGk9tb9DLhoBGKPzxUBE&callback=getAddress" async defer></script>

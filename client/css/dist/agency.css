@@ -197,7 +197,7 @@ fieldset[disabled] .btn-primary.active {
   }
 }
 
-.loginImg{
+div .loginImg{
   background-image: url('../../image/loginImg.jpg');
   background-repeat: no-repeat;
   background-attachment: scroll;
@@ -209,7 +209,9 @@ fieldset[disabled] .btn-primary.active {
   text-align: center;
   color: white;
   width: 100%;
-  height: 200px;
+  height: 700px;
+  margin-top: -175px;
+  border-radius: 37px;
 }
 
 

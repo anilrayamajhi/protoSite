@@ -88,6 +88,10 @@ display: none;
 
 @media only screen and (max-width: 768px){
 
+div .loginImg{
+  display: none;
+}
+
 .trust .navHome{
   width: 100%;
 }

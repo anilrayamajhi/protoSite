@@ -1,4 +1,11 @@
-<h1>home</h1>
-<div ng-controller="logoutController as logoutCtrl">
-  <a ng-click='logoutCtrl.logout()' class="btn btn-default">Logout</a>
-</div>
+<header>
+  <div class="container navHome">
+      <div class="intro-text">
+        <div class="intro-lead-in" style="text-align:left;padding-left: 37px;color:#760926;"><small><em>- Just a [Ctrl-v] away from a webpage</em></small></div>
+          <div class="intro-heading" style="color:#760926;">protosite</div>
+        <div class="alert alert-danger" ng-show="pageCtrl.invalidUrl">
+          Enter a valid Url: &emsp;&emsp;&emsp;  https://www.yelp.com/biz/**GI**
+        </div>
+    </div>
+  </div>
+</header>

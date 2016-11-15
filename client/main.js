@@ -11,7 +11,7 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
     .state('home', {
       url: '/',
       templateUrl: 'templates/home.html',
-      restricted: true
+      controller: 'homeController as homeCtrl'
     })
     .state('login', {
       url: '/login',

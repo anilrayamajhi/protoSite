@@ -5,6 +5,7 @@ angular.module('myApp')
   .controller('registerController', registerController)
   .controller('pageController', pageController)
   .controller('singlePageController', singlePageController)
+  .controller('homeController',homeController)
   .filter('tel', tel)
   // .filter('pageFilter', pageFilter)
 
@@ -15,6 +16,7 @@ angular.module('myApp')
   registerController.$inject = ['$state', 'AuthService']
   pageController.$inject = ['$state', '$http', 'AuthService']
   singlePageController.$inject = ['$state', '$http', '$stateParams']
+  homeController.$inject = [$state, AuthService]
 
 
 function mainController($rootScope, $state, AuthService) {
@@ -102,6 +104,15 @@ function registerController($state, AuthService) {
       })
   }
 }
+
+function homeController($state, AuthService){
+  var vm = this
+
+  AuthService.getUserStatus()
+    .then(function(data){
+      if(!data.data.user){$state.go('login')}
+    })
+  }
 
 function pageController($state, $http, AuthService){
   var vm = this

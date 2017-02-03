@@ -1,6 +1,7 @@
 <div class="container">
+  <a ui-sref="home"><i class="fa fa-home fa-3x" style="color:#760926"></i></a>
     <div class=" row">
-      <div class="col-md-5 col-sm-5">
+      <div class="col-md-6 col-sm-6">
         <div ng-show = "loginCtrl.selected">
           <h1>Login</h1>
           <div ng-show="loginCtrl.error" class="alert alert-danger">{{ loginCtrl.errorMessage }}</div>
@@ -38,8 +39,10 @@
               <button type="submit" class="btn page-scroll" ng-disabled="registerCtrl.disabled">Register</button>
             </div>
         </form>
+        <br>
+          <button class="btn btn-link" data-toggle="modal" data-target="#gridSystemModal" ng-click="loginCtrl.status()">Log In..</button>
       </div>
     </div>
-      <div class="col-md-5 col-sm-5 col-md-offset-2 col-sm-offset-2"><div class="loginImg"></div></div>
+      <div class="col-md-4 col-sm-4 col-md-offset-2 col-sm-offset-2"><div class="loginImg"></div></div>
     </div>
 </div>

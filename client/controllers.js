@@ -60,7 +60,7 @@ function loginController($state, AuthService) {
 
   vm.status = function(){
     console.log("vm.selected set to false");
-    vm.selected = false;
+    vm.selected = !vm.selected;
   }
 }
 
@@ -106,12 +106,12 @@ function registerController($state, AuthService) {
 }
 
 function homeController($state, AuthService){
-  var vm = this
-
-  AuthService.getUserStatus()
-    .then(function(data){
-      if(!data.data.user){$state.go('login')}
-    })
+  // var vm = this
+  //
+  // AuthService.getUserStatus()
+  //   .then(function(data){
+  //     if(!data.data.user){$state.go('login')}
+  //   })
   }
 
 function pageController($state, $http, AuthService){

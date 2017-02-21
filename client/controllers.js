@@ -139,7 +139,9 @@ function pageController($state, $http, AuthService){
       vm.invalidUrl = true;
     }
     else if(content.pageUrl.slice(0,25) == "https://www.yelp.com/biz/" ){
+      if(content.pageUrl.split("").indexOf("?") != -1){
       content.pageUrl = content.pageUrl.split("").splice(0,content.pageUrl.split("").indexOf("?")).join('');
+      }
       // console.log(content.pageUrl);
       vm.createPage()}
     else{

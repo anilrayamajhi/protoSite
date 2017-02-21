@@ -13,6 +13,10 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
       templateUrl: 'templates/home.html',
       controller: 'homeController as homeCtrl'
     })
+    .state('404', {
+      url: '/404',
+      templateUrl: 'templates/404.html'
+    })
     .state('login', {
       url: '/login',
       templateUrl: 'templates/login.html',

@@ -153,6 +153,7 @@ function pageController($state, $http, AuthService){
   vm.createPage = function() {
     $http.post('/api/pages', vm.newPage)
       .success(function(data) {
+        // console.log(data);
           vm.urlExist = false;
           if(!data.success){
             console.log('NO PAGE',data);
@@ -179,8 +180,16 @@ function singlePageController($state, $http, $stateParams){
   var vm = this
   $http.get('api/pages/'+$stateParams.id)
     .success(function(page){
-      vm.page = page;
-      vm.id = $stateParams.id;
+      console.log(page);
+      if(!!page){
+        vm.page = page;
+        vm.id = $stateParams.id;
+      }
+      else {
+        console.log("kera");
+        $state.go('404');
+      }
+
     })
 }
 

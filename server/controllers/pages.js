@@ -39,8 +39,15 @@ function show(req, res) {
   Page.findById(req.params.id).populate('_by').exec(function(err, page) {
     if(err) return console.log(err)
     yelp.business(page.pageUrl.slice(25), function(err, data) {
-        if (err) return console.log(error);
-        res.send(data)
+
+        if(!!data){
+        if (err) return console.log('SINGLE PAGE ERROR',error);
+        res.json(data)
+        }
+        else {console.log("GANEY from BE: ");
+        res.json(null)
+      }
+        // res.json({success: false})}
       });
   })
 }
@@ -58,7 +65,7 @@ function create(req, res) {
       newPage.pageUrl = req.body.pageUrl
       newPage.save(function(err){
           if(err) console.log(err);
-          res.json({success: true, message: "Page created!🤘🏿", page: body})
+          res.json({success: true, message: "Page created!🤘🏿"})
       })
     })
     })

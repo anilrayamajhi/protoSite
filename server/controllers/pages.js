@@ -30,7 +30,7 @@ function index(req, res) {
     // console.log(_.where(pages, {_by}));
     if(err) return console.log(err)
     newArr = _.map(pages, function(el){if((el._by._id).toString() == req.user._id){return el}});
-    console.log(_.compact(newArr));
+    console.log(newArr);
     res.json(newArr);
   })
 }
@@ -46,17 +46,31 @@ function show(req, res) {
 }
 
 function create(req, res) {
+  Page.findOne({pageUrl: req.body.pageUrl}, function(err, pbody){
+    if (err) return console.log('IDK ERROR', err);
+    if(!!pbody) return res.json({success:false,message: "Already page bro", pbody});
+    // console.log('PBODY: ',pbody);
   Page.findById(req.user).populate('User').exec(function(err, body) {
-    if(err) console.log(err);
-    var newPage = new Page();
-    newPage._by = req.user._id;
-    newPage.pageUrl = req.body.pageUrl
-    newPage.save(function(err){
-        if(err) console.log(err);
-        res.json({success: true, message: "Page created!🤘🏿", page: body})
+    if(err) return console.log(err);
+
+      var newPage = new Page();
+      newPage._by = req.user._id;
+      newPage.pageUrl = req.body.pageUrl
+      newPage.save(function(err){
+          if(err) console.log(err);
+          res.json({success: true, message: "Page created!🤘🏿", page: body})
+      })
     })
     })
 }
+
+// function create(req, res){
+//   Page.findById(req.user).populate('User').exec()
+//     .then(function(body){
+//
+//     })
+// }
+
 
 function update(req, res) {
   Page.findByIdAndUpdate(req.params.id, req.body, {new: true},function(err, page) {

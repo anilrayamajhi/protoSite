@@ -16,7 +16,7 @@ angular.module('myApp')
   registerController.$inject = ['$state', 'AuthService']
   pageController.$inject = ['$state', '$http', 'AuthService']
   singlePageController.$inject = ['$state', '$http', '$stateParams']
-  homeController.$inject = [$state, AuthService]
+  homeController.$inject = ['$state', 'AuthService']
 
 
 function mainController($rootScope, $state, AuthService) {
@@ -132,11 +132,16 @@ function pageController($state, $http, AuthService){
 
   vm.checkContent = function(content){
     vm.invalidUrl = false;
+    vm.confirmUrl = "";
     if(content == undefined){
-      console.log("its fkin empty man");
+      console.log("its empty man");
+      console.log(content);
       vm.invalidUrl = true;
     }
-    else if(content.pageUrl.slice(0,25) == "https://www.yelp.com/biz/"){vm.createPage()}
+    else if(content.pageUrl.slice(0,25) == "https://www.yelp.com/biz/" ){
+      content.pageUrl = content.pageUrl.split("").splice(0,content.pageUrl.split("").indexOf("?")).join('');
+      // console.log(content.pageUrl);
+      vm.createPage()}
     else{
       console.log("not a valid url");
       vm.invalidUrl = true;
@@ -146,8 +151,16 @@ function pageController($state, $http, AuthService){
   vm.createPage = function() {
     $http.post('/api/pages', vm.newPage)
       .success(function(data) {
-          vm.pages = data;
-          $state.reload();
+          vm.urlExist = false;
+          if(!data.success){
+            console.log('NO PAGE',data);
+            vm.urlExist = true;
+          }
+          else{
+            vm.pages = data;
+            vm.urlExist = false;
+            $state.reload();
+          }
       })
     }
 

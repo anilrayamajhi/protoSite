@@ -7,6 +7,9 @@
         <div class="alert alert-danger" ng-show="pageCtrl.invalidUrl">
           Enter a valid Url: &emsp;&emsp;&emsp;  https://www.yelp.com/biz/**GI**
         </div>
+        <div class="alert alert-danger" ng-show="pageCtrl.urlExist">
+          This Business Exists in your Profile.
+        </div>
         <div class="input-group">
           <span class="input-group-addon glyphicon glyphicon-link" id="basic-addon3"></span><input ng-model="pageCtrl.newPage.pageUrl" class="form-control" type="url" name="name" placeholder="Yelp Business Page">
         </div><br>
@@ -19,14 +22,14 @@
 <div ng-repeat="page in pageCtrl.pages track by $index">
   <div class="well" ng-if="page != null">
   <div class="row" >
-    <div class="col-md-4" ui-sref="page({id: page._id})">
+    <a target="_blank" style="text-decoration:none; color: black" class="col-md-4" ui-sref="page({id: page._id})">
       <strong>{{page.pageUrl.slice(25).split("-").slice(0,2).join(" ")}}</strong>
-    </div>
+    </a>
 
       <div class="col-md-4 col-md-offset-4">
-        <div class="" ui-sref="page({id: page._id})">
+        <a target="_blank" style="text-decoration:none; color: black" class="" ui-sref="page({id: page._id})">
           <small><strong>Created: <br />{{page.updatedAt | date: "MM/dd/yyyy 'at' h:mma"}}</strong></small>
-        </div>
+        </a>
         <div ng-click="pageCtrl.destroyPage(page, $index)" class="social" style="float:right;"><i class="fa fa-trash" aria-hidden="true"></i></div>
         <a href="{{page.pageUrl}}" target="_blank"><div class="social" aria-hidden="true" style="float:right;"><i class="fa fa-yelp" aria-hidden="true"></i></div></a>
 

@@ -40,6 +40,7 @@ Simpliest way possible as in, It requires on two commands:
 
 ### How to run locally
 1. Install Node.js.
+
 2. Clone the repo.
 
         $ git clone https://github.com/anilrayamajhi/protoSite

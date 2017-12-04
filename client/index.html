@@ -3,8 +3,8 @@
 
 <head>
   <meta charset="utf-8">
-  <title>ProtoSite</title>
-
+  <title ng-show="main.$state.includes('home') || main.$state.includes('profile') || main.$state.includes('404')">protoSite</title>
+  <title ng-hide="main.$state.includes('home') || main.$state.includes('profile') || main.$state.includes('404')">GANEY</title>
 <!-- styles -->
   <link rel="stylesheet" href="/css/dist/bootstrap.min.css">
     <link rel="stylesheet" href="/css/dist/agency.css">

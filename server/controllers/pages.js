@@ -55,7 +55,7 @@ function show(req, res) {
 function create(req, res) {
   Page.findOne({pageUrl: req.body.pageUrl}, function(err, pbody){
     if (err) return console.log('IDK ERROR', err);
-    if(!!pbody) return res.json({success:false,message: "Already page bro", pbody});
+    // if(!!pbody) return res.json({success:false,message: "Already page bro", pbody});
     // console.log('PBODY: ',pbody);
   Page.findById(req.user).populate('User').exec(function(err, body) {
     if(err) return console.log(err);

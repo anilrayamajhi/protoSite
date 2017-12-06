@@ -25,12 +25,11 @@ module.exports = {
 function index(req, res) {
   Page.find({}).sort({createdAt: 'desc'}).populate('_by User').exec(function(err, pages) {
     if(req.user === undefined) return console.log("need user");
-    console.log(req.user._id);
     // console.log(pages);
     // console.log(_.where(pages, {_by}));
     if(err) return console.log(err)
-    newArr = _.map(pages, function(el){if((el._by._id).toString() == req.user._id){return el}});
-    console.log(newArr);
+
+    newArr = pages.filter((el) => (el._by._id).toString() == req.user._id);
     res.json(newArr);
   })
 }

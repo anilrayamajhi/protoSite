@@ -14,6 +14,9 @@ var
   path = require('path'),
   passport = require('passport'),
   passportConfig = require('./config/passport.js'),
+  socketIO = require('socket.io'),
+  http = require('http').Server(app),
+  socketServer = socketIO(http);
   Yelp = require('yelp'),
   MongoStore = require('connect-mongo')(expressSession),
   // user schema/model
@@ -103,7 +106,21 @@ app.use(function(err, req, res) {
   }))
 })
 
+socketServer.on('connection', function(socket){
+  console.log('A client connected');
 
-app.listen(PORT, function(err) {
+    socket.on('chat message', function(phrase){
+      console.log('Phrase for Server:  ', app, phrase);
+      socketServer.emit('finish', phrase);
+    })
+
+
+    socket.on('disconnect', function(socket){
+      console.log('A client is disconnected');
+    });
+})
+
+
+http.listen(PORT, function(err) {
   console.log(err || "Server running on port " + PORT)
 })

@@ -34,7 +34,7 @@
 }
 
 .chat-wrapper > .chat-container{
-  width: 277px;
+  width: 367px;
   position: fixed;
   bottom: 0;
   z-index: 1000;
@@ -62,14 +62,14 @@
 
 .chat-container > .chat-body{
   background-color: #FFFFFF;
-  height: 247px;
+  height: 337px;
   border-left: #f9f9f9;
   border-right: #f9f9f9;
   border-width: 1px;
   border-right-style: solid;
   border-left-style: solid;
   overflow-y: scroll;
-  max-height: 247px;
+  max-height: 337px;
 }
 
 .chat-container > .chat-foot {
@@ -116,13 +116,23 @@
 
 
 .avatar {
-  background-color: #f1f6ff;
-  color: #9797a4;
-  padding: 9px;
+  padding: 10px 13px;
   font-size: 11px;
   font-weight: bold;
   border-radius: 16px;
-  flex: 1;
+}
+
+.avatar-primary{
+  background-color: rgb(38, 68, 132);
+  color: #FFFFFF;
+}
+.avatar-secondary {
+  background-color: #f1f6ff;
+  color: #9797a4;
+}
+
+.take-me {
+  display: none;
 }
 
 /* /////////////////////////////////////////////////////// */

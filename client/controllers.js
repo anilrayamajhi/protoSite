@@ -124,9 +124,9 @@ function pageController($state, $http, AuthService){
 
   $http.get('/api/pages')
     .success(function(data) {
-      console.log("********");
-      console.log(data);
-      console.log("********");
+      // console.log("********");
+      // console.log(data);
+      // console.log("********");
       vm.pages = data.map(function(el){if(el!=null){return el}})
     })
 

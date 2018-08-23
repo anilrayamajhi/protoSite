@@ -109,9 +109,9 @@ app.use(function(err, req, res) {
 socketServer.on('connection', function(socket){
   console.log('A client connected');
 
-    socket.on('chat message', function(phrase){
-      console.log('Phrase for Server:  ', app, phrase);
-      socketServer.emit('finish', phrase);
+    socket.on('chat message', function(info){
+      console.log(info);
+      socketServer.emit('finish', info);
     })
 
 

@@ -17,7 +17,7 @@
       </form>
     </div>
   </div>
-  
+
 <br><br><br><br>
 <div ng-repeat="page in pageCtrl.pages track by $index">
   <div class="well" ng-if="page != null">
@@ -36,4 +36,8 @@
     </div>
   </div>
   </div>
+</div>
+
+<div ng-show="main.currentUser" class="text-right">
+  <div class="chat-bubble"><i class="fab fa-weixin"></i></div>
 </div>

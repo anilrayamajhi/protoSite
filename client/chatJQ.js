@@ -40,8 +40,10 @@ socket.on('finish', function(info){
 ////////Refactoring click event//////
 function submit (){
   let chatInput = $('.chat-input').find('.form-control');
-  console.log(user);
-  socket.emit('chat message', {user, phrase: chatInput.val()});
-  chatInput.val('');
-  return false;
+  let chatVal = chatInput.val();
+  if(!!chatVal.trim()){
+    socket.emit('chat message', {user, phrase: chatInput.val()});
+    chatInput.val('');
+    return false;
+  }
 }

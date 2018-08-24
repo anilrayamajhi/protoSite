@@ -33,7 +33,7 @@
   /* display: none; */
 }
 
-.chat-wrapper > .chat-container{
+.chat-wrapper > .chat-container {
   width: 367px;
   position: fixed;
   bottom: 0;
@@ -44,15 +44,19 @@
   display: none;
 }
 
+.chat-wrapper > .chat-container-big{
+  width: 977px;
+}
+
 
 .chat-wrapper > .chat-container > .chat-head{
-  background-color: rgb(38, 68, 132);
+  background-color: rgb(38, 68, 132, 0.92);
   color: #FFFFFF;
   height: 37px;
   border-radius: 4px 4px 0 0;
 }
 
-.chat-head .fa-times {
+.chat-head .fa-times, .chat-head .fa-expand-arrows-alt, .chat-head .fa-compress {
   float: right;
   cursor: pointer;
 }
@@ -72,6 +76,11 @@
   max-height: 337px;
 }
 
+.chat-container > .chat-body-big{
+  height: 737px;
+  max-height: 737px;
+}
+
 .chat-container > .chat-foot {
   height: 40px;
   border: 1px solid rgb(170, 181, 204);
@@ -85,6 +94,10 @@
 
 .chat-foot > .chat-input {
   flex: 5;
+}
+
+.chat-foot > .chat-input-big {
+  flex: 12;
 }
 
 .chat-input > .form-control{
@@ -107,7 +120,7 @@
 
 
 .message{
-  margin: 0.5em;
+  margin: 0.7em;
   display: flex;
 }
 
@@ -125,7 +138,7 @@
   padding: 10px 13px;
   font-size: 11px;
   font-weight: bold;
-  border-radius: 16px;
+  border-radius: 17px;
 }
 
 .avatar-primary{

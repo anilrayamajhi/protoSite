@@ -12,6 +12,19 @@ $('body').on('click', '.chat-head .fa-times', function(e){
   $('.chat-bubble').css('display', 'flex');
 })
 
+$('body').on('click', '.chat-head .fa-expand-arrows-alt', function(e){
+  $('.chat-container').addClass('chat-container-big');
+  $('.chat-body').addClass('chat-body-big');
+  $('.chat-input').addClass('chat-input-big');
+  $('.fa-expand-compress').removeClass('fa-expand-arrows-alt').addClass('fa-compress');
+})
+
+$('body').on('click', '.chat-head .fa-compress', function(e){
+  $('.chat-container').removeClass('chat-container-big');
+  $('.chat-body').removeClass('chat-body-big');
+  $('.chat-input').removeClass('chat-input-big');
+  $('.fa-expand-compress').addClass('fa-expand-arrows-alt').removeClass('fa-compress');
+})
 
 // Socket.io documentation
 var socket = io();
@@ -35,6 +48,7 @@ socket.on('finish', function(info){
   }else{
       $('.chat-body').append(`<div class="message"><div class="avatar avatar-secondary">${info.user.charAt(0)}</div><div class="message-content">${info.phrase}</div></div>`)
   }
+  $(".chat-body").scrollTop($(".chat-body")[0].scrollHeight);
 });
 
 ////////Refactoring click event//////

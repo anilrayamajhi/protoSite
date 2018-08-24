@@ -241,6 +241,18 @@ display: none;
 
 @media only screen and (max-width: 768px){
 
+.fa-expand-arrows-alt{
+  display: none;
+}
+
+.chat-wrapper > .chat-container{
+  right: 7px;
+  bottom: 7px;
+}
+
+
+
+
 div .loginImg{
   display: none;
 }

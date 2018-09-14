@@ -28,7 +28,7 @@ $('body').on('click', '.chat-head .fa-compress', function(e){
 
 // Socket.io documentation
 var socket = io();
-console.log('HERE:   ', $('.chat-wrapper').find('.take-me').text());
+// console.log('HERE:   ', $('.chat-wrapper').find('.take-me').text());
 
 
 $('body').on('click', '.chat-send', function(){

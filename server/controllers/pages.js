@@ -25,11 +25,13 @@ module.exports = {
 function index(req, res) {
   Page.find({}).sort({createdAt: 'desc'}).populate('_by User').exec(function(err, pages) {
     if(req.user === undefined) return console.log("need user");
-    // console.log(pages);
-    // console.log(_.where(pages, {_by}));
     if(err) return console.log(err)
 
-    newArr = pages.filter((el) => (el._by._id).toString() == req.user._id);
+    newArr = pages.filter((el) => {
+      if(!!el._by && (el._by._id).toString() == req.user._id){
+        return el;
+      }
+    });
     res.json(newArr);
   })
 }
@@ -40,6 +42,7 @@ function show(req, res) {
     yelp.business(page.pageUrl.slice(25), function(err, data) {
 
         if(!!data){
+          console.log(data);
         if (err) return console.log('SINGLE PAGE ERROR',error);
         res.json(data)
         }
